@@ -85,7 +85,7 @@ System.setProperty("webdriver.chrome.driver", "/Users/furkanozturk/Documents/Sel
        }
        //System.out.println(str);
        Collections.sort(str);
-       //System.out.println(str);
+       System.out.println(str);
        
        WebElement sortMenu = driver.findElement(By.xpath("//select[@class='srp-header-sort-select']"));
        smartWait(1000);
@@ -103,7 +103,7 @@ System.setProperty("webdriver.chrome.driver", "/Users/furkanozturk/Documents/Sel
        smartWait(1000);
        //System.out.println(str1);
        String flag2="";
-       for(int f=0,s=sortedTesla.size()-1;f<sortedTesla.size();f++,s--) {
+       for(int f=0,s=sortedTesla.size()-1;f<sortedTesla.size() && s>=0;f++,s--) {
     	   if(str.get(f).equalsIgnoreCase(str1.get(s))) {flag2+=2;}
     	  
        }
@@ -123,10 +123,11 @@ System.setProperty("webdriver.chrome.driver", "/Users/furkanozturk/Documents/Sel
    			mileageFromSpans.add(Integer.parseInt(spans.get(q).getText().substring(9, 15).replace(",", "") )   );
    		}
    	}
+   	System.out.println(mileageFromSpans);
    	
    	for(int c=0;c<mileageFromSpans.size()-1;c++) {
    		if(mileageFromSpans.get(c)<mileageFromSpans.get(c+1)) {continue;}
-   		else {System.out.println("MILEAGE SORTING FAIL");}
+   		else {System.out.println("FAIL, SORTED BY MILEAGE");}
    	}
    	System.out.println("SORTED BY MILEAGE, PASS");
        
